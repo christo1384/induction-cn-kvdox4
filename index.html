@@ -1,0 +1,143 @@
+<title>BlueScope Induction 中文</title>
+<meta name="robots" content="noindex,nofollow">
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+/* Layout: one narrow column, phone first; video on top, three big step buttons, then two instruction cards. */
+:root{--navy:#14304f;--blue:#1f4e79;--orange:#c85d00;--bg:#f3f5f8;--card:#ffffff;--ink:#16202b;--muted:#4a5663;--green:#1b7f3b;--line:#d5dbe3;--on-accent:#ffffff;--active-bg:#fff3e4;--net-bg:#fde8e8;--net-ink:#a11;--head:#14304f}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--blue:#5a9bd5;--orange:#f08a24;--bg:#0f1720;--card:#18222e;--ink:#e8edf3;--muted:#a9b5c2;--green:#3fae61;--line:#2e3c4c;--on-accent:#0b1118;--active-bg:#2a2218;--net-bg:#4a2020;--net-ink:#ffb3b3;--head:#0a1119;color-scheme:dark}}
+:root[data-theme="dark"]{--blue:#5a9bd5;--orange:#f08a24;--bg:#0f1720;--card:#18222e;--ink:#e8edf3;--muted:#a9b5c2;--green:#3fae61;--line:#2e3c4c;--on-accent:#0b1118;--active-bg:#2a2218;--net-bg:#4a2020;--net-ink:#ffb3b3;--head:#0a1119;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,"Segoe UI","Microsoft YaHei","PingFang SC",sans-serif;background:var(--bg);color:var(--ink);font-size:18px;line-height:1.35}
+header{background:var(--head);color:#fff;border-bottom:5px solid var(--orange)}
+.in{max-width:760px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+header .in{padding-block:14px}
+header h1{margin:0;font-size:22px}
+header p{margin:4px 0 0;font-size:16px;opacity:.9}
+main.in{padding-block:12px 40px}
+video{width:100%;background:#000;border-radius:10px;max-height:60vh}
+#nx{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
+#now{font-weight:700;margin:8px 0 4px;min-height:1.4em}
+.btn{display:block;width:100%;min-height:56px;padding:12px 14px;border:0;border-radius:12px;background:var(--blue);color:var(--on-accent);font-size:19px;font-weight:700;text-align:left;text-decoration:none;cursor:pointer;font-family:inherit}
+.btn.orange{background:var(--orange);color:#fff;text-align:center}
+.btn.alt{background:var(--card);color:var(--blue);border:2px solid var(--blue);text-align:center}
+.btn:focus-visible,.step:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+.zh{display:block;font-size:.9em;font-weight:600;opacity:.95}
+ol{list-style:none;margin:14px 0;padding:0}
+ol>li{margin:0 0 10px}
+.step{display:flex;gap:12px;align-items:center;background:var(--card);border:2px solid var(--line);border-radius:12px;padding:10px 12px;min-height:64px;width:100%;text-align:left;font-family:inherit;font-size:18px;color:var(--ink);cursor:pointer}
+.step.active{border-color:var(--orange);background:var(--active-bg)}
+.num{flex:none;width:40px;height:40px;border-radius:50%;background:var(--blue);color:var(--on-accent);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:20px}
+.step .t{flex:1;min-width:0;font-weight:700}
+.tick{flex:none;width:38px;height:38px;border-radius:8px;border:2px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:26px;color:#fff;background:var(--card)}
+.done .tick{background:var(--green);border-color:var(--green)}
+.done .num{background:var(--green);color:#fff}
+.card{background:var(--card);border:2px solid var(--line);border-radius:12px;padding:12px 14px;margin:12px 0}
+.card h2{margin:0 0 6px;font-size:20px}
+.card ul{margin:6px 0 10px;padding-left:22px}
+.card li{margin:0 0 6px}
+.net{display:inline-block;background:var(--net-bg);color:var(--net-ink);border-radius:6px;padding:2px 8px;font-size:15px;font-weight:700;margin-bottom:6px}
+.small{font-size:15px;color:var(--muted)}
+.row{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0}
+.row .btn{flex:1 1 200px}
+</style>
+
+<header><div class="in">
+<h1>BlueScope Induction <span lang="zh-Hans">/ BlueScope 入职培训</span></h1>
+<p>Do the steps in order. <span lang="zh-Hans">请按顺序完成。</span></p>
+</div></header>
+<main class="in">
+
+<video id="v" controls playsinline preload="metadata"></video>
+<video id="nx" preload="auto" muted playsinline aria-hidden="true" tabindex="-1"></video>
+<div id="now">&nbsp;</div>
+<div class="row">
+<button class="btn orange" id="all" type="button">Play all 1 → 2 → 3<span class="zh" lang="zh-Hans">连续播放 1 → 2 → 3</span></button>
+</div>
+<div id="err" class="small" hidden>Video did not load. Check your internet and tap the step again. <span lang="zh-Hans">视频无法播放。请检查网络，再点一次该步骤。</span></div>
+
+<ol id="list">
+<li><button class="step" type="button" data-i="0"><span class="num">1</span><span class="t">Watch: Site Induction<span class="zh" lang="zh-Hans">观看：现场入职培训</span></span><span class="tick"></span></button></li>
+<li><button class="step" type="button" data-i="1"><span class="num">2</span><span class="t">Watch: Isolation Applicant<span class="zh" lang="zh-Hans">观看：隔离申请人培训</span></span><span class="tick"></span></button></li>
+<li><button class="step" type="button" data-i="2"><span class="num">3</span><span class="t">Watch: Pregnancy at Work<span class="zh" lang="zh-Hans">观看：孕期工作安全</span></span><span class="tick"></span></button></li>
+</ol>
+
+<a class="btn alt" href="BlueScope-Transcript-CN-EN.pdf" target="_blank" rel="noopener">Read along (PDF)<span class="zh" lang="zh-Hans">边看边读（PDF 文字稿，中英对照）</span></a>
+
+<div class="card">
+<span class="net">Needs internet 需要网络</span>
+<h2>Step 4. Do the BlueScope questionnaires<br><span class="zh" lang="zh-Hans">第4步：完成BlueScope在线问卷</span></h2>
+<ul>
+<li>Sign in with the login your supervisor gives you.<br><span class="zh" lang="zh-Hans">用主管给你的账号登录。</span></li>
+<li>Do Contractor Induction. Do both courses.<br><span class="zh" lang="zh-Hans">完成“Contractor Induction”（承包商入职培训），两个课程都要做。</span></li>
+<li>Answer the questions on the BlueScope page.<br><span class="zh" lang="zh-Hans">在BlueScope网页上回答问题。</span></li>
+</ul>
+<a class="btn orange" href="https://learning.bluescope.com.au/my/courses.php" target="_blank" rel="noopener">Open BlueScope courses<span class="zh" lang="zh-Hans">打开BlueScope课程</span></a>
+</div>
+
+<div class="card">
+<h2>Step 5. Finish <span class="zh" lang="zh-Hans">第5步：完成</span></h2>
+<ul>
+<li>Download both certificates. Your own full name must be on them.<br><span class="zh" lang="zh-Hans">下载两份证书。证书上必须是你自己的全名。</span></li>
+<li>Give these to your supervisor:<br><span class="zh" lang="zh-Hans">把以下材料交给主管：</span>
+<ul>
+<li>2 certificates <span lang="zh-Hans">/ 两份证书</span></li>
+<li>Photo ID <span lang="zh-Hans">/ 带照片的身份证件</span></li>
+<li>Head-and-shoulders photo <span lang="zh-Hans">/ 一张头肩照</span></li>
+<li>Site Access Card form <span lang="zh-Hans">/ 现场通行卡表格</span></li>
+</ul></li>
+</ul>
+</div>
+
+<p class="small">Ticks are saved on this device only. <span lang="zh-Hans">打钩只保存在本设备上。</span></p>
+</main>
+<script>
+(function(){
+var vids=[
+ {parts:["v1-1.mp4","v1-2.mp4","v1-3.mp4","v1-4.mp4","v1-5.mp4","v1-6.mp4"],en:"1. Site Induction",zh:"现场入职培训"},
+ {parts:["v2-1.mp4","v2-2.mp4","v2-3.mp4","v2-4.mp4"],en:"2. Isolation Applicant",zh:"隔离申请人培训"},
+ {parts:["v3-1.mp4","v3-2.mp4"],en:"3. Pregnancy at Work",zh:"孕期工作安全"}
+];
+var KEY="bluescope-cn-ticks";
+var done=[false,false,false],cur=-1,pi=0,all=false;
+try{var s=JSON.parse(localStorage.getItem(KEY)||"[]");if(Array.isArray(s)&&s.length===3)done=s.map(Boolean);}catch(e){}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(done));}catch(e){}}
+var v=document.getElementById("v"),nx=document.getElementById("nx"),now=document.getElementById("now"),err=document.getElementById("err");
+var steps=[].slice.call(document.querySelectorAll(".step"));
+function paint(){
+ steps.forEach(function(b,i){
+  b.classList.toggle("done",done[i]);
+  b.classList.toggle("active",i===cur);
+  b.querySelector(".tick").textContent=done[i]?"✓":"";
+ });
+}
+function label(){
+ var d=vids[cur];
+ now.textContent=d.en+" · "+d.zh+(d.parts.length>1?"  ("+(pi+1)+"/"+d.parts.length+")":"");
+}
+function preloadNext(){
+ var d=vids[cur],n=null;
+ if(pi+1<d.parts.length)n=d.parts[pi+1];
+ else if(all&&cur<2)n=vids[cur+1].parts[0];
+ if(n){nx.src=n;try{nx.load();}catch(e){}}
+}
+function load(i,p,autoplay){
+ cur=i;pi=p;err.hidden=true;
+ v.src=vids[i].parts[p];
+ label();paint();preloadNext();
+ if(autoplay){var pr=v.play();if(pr&&pr.catch)pr.catch(function(){});}
+}
+steps.forEach(function(b){b.addEventListener("click",function(){all=false;load(+b.getAttribute("data-i"),0,true);});});
+document.getElementById("all").addEventListener("click",function(){all=true;load(0,0,true);});
+v.addEventListener("ended",function(){
+ if(cur<0)return;
+ var d=vids[cur];
+ if(pi<d.parts.length-1){load(cur,pi+1,true);return;}
+ done[cur]=true;save();
+ if(all&&cur<2){load(cur+1,0,true);}
+ else if(all){paint();now.textContent="All videos done. Next: Step 4. 全部观看完成，请做第4步。";}
+ else{paint();}
+});
+v.addEventListener("error",function(){if(cur>=0)err.hidden=false;});
+paint();
+})();
+</script>
